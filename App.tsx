@@ -96,12 +96,31 @@ const App: React.FC = () => {
     >
       <div className="absolute inset-0 bg-gradient-to-br from-purple-50/50 via-pink-50/50 to-blue-50/50"></div>
       <div className="container mx-auto max-w-4xl p-2 sm:p-4 relative z-10">
-        <header className="flex flex-col sm:flex-row items-center justify-between my-4 sm:my-8 gap-2 sm:gap-4">
-          {/* 왼쪽 버튼들 - 모바일에서는 숨김 */}
-          <div className="hidden sm:flex sm:flex-col gap-2 w-auto justify-start">
+        <header className="flex flex-row items-center justify-between my-4 sm:my-8 gap-1 sm:gap-2">
+          {/* 왼쪽 버튼들 - 모바일: 작은 이모지 버튼 가로 배치, 데스크톱: 전체 버튼 세로 배치 */}
+          <div className="flex flex-row sm:flex-col gap-1 sm:gap-2 w-auto justify-start">
+            {/* 모바일: 작은 이모지 버튼 - 가로 배치 */}
             <button
               onClick={handleOpenTextbook}
-              className="flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-cyan-600 transition-all shadow-lg hover:shadow-xl min-h-[44px] text-base"
+              className="flex sm:hidden items-center justify-center px-2 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-cyan-600 transition-all shadow-md hover:shadow-lg w-10 h-10 text-base"
+            >
+              📖
+            </button>
+            <button
+              onClick={handleToggleMusic}
+              className={`flex sm:hidden items-center justify-center px-2 py-2 font-semibold rounded-lg transition-all shadow-md hover:shadow-lg w-10 h-10 text-base ${
+                isMusicPlaying
+                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600'
+                  : 'bg-gradient-to-r from-gray-400 to-gray-500 text-white hover:from-gray-500 hover:to-gray-600'
+              }`}
+            >
+              ♬
+            </button>
+            
+            {/* 데스크톱: 전체 버튼 - 세로 배치 */}
+            <button
+              onClick={handleOpenTextbook}
+              className="hidden sm:flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-cyan-600 transition-all shadow-lg hover:shadow-xl min-h-[44px] text-base"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -110,28 +129,19 @@ const App: React.FC = () => {
             </button>
             <button
               onClick={handleToggleMusic}
-              className={`flex items-center justify-center gap-2 px-4 py-2 font-semibold rounded-xl transition-all shadow-lg hover:shadow-xl min-h-[44px] text-base ${
+              className={`hidden sm:flex items-center justify-center gap-2 px-4 py-2 font-semibold rounded-xl transition-all shadow-lg hover:shadow-xl min-h-[44px] text-base ${
                 isMusicPlaying
                   ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600'
                   : 'bg-gradient-to-r from-gray-400 to-gray-500 text-white hover:from-gray-500 hover:to-gray-600'
               }`}
             >
-              {isMusicPlaying ? (
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                </svg>
-              ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              )}
+              <span className="text-lg">♬</span>
               배경음악
             </button>
           </div>
           
           {/* 제목과 부제목 - 중앙 */}
-          <div className="flex-1 text-center order-first sm:order-none">
+          <div className="flex-1 text-center">
             <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-black mb-2 sm:mb-3">
               철학자와 도란도란 ☕
             </h1>

@@ -40,7 +40,7 @@ const TopicCard: React.FC<TopicCardProps> = ({ topic, onClick }) => {
               className="w-full h-full object-cover"
             />
           </div>
-          <p className="text-purple-600 font-bold text-base sm:text-lg">{topic.philosopher}</p>
+          <p className="text-gray-600 font-bold text-base sm:text-lg">{topic.philosopher}</p>
         </div>
       </div>
     </button>

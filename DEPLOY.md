@@ -76,7 +76,7 @@ git push -u origin main
 
 ```bash
 # 변경된 파일 확인
-
+git status
 
 # 모든 변경사항 추가
 git add .

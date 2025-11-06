@@ -20,7 +20,7 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({ message, philosopher, philosoph
           <img src={philosopherImage} alt={philosopher} className="w-full h-full object-cover" />
         </div>
         <div className="flex flex-col items-start flex-1 min-w-0">
-            <p className="text-xs sm:text-sm text-purple-600 font-medium mb-1">{philosopher}</p>
+            <p className="text-xs sm:text-sm text-gray-600 font-medium mb-1">{philosopher}</p>
             <div
                 className="bg-white rounded-2xl rounded-tl-none p-3 sm:p-4 max-w-[85%] sm:max-w-lg prose prose-sm max-w-none shadow-md border border-purple-100 prose-p:text-gray-900 prose-p:font-semibold prose-p:text-xs sm:prose-p:text-base prose-strong:text-gray-900 prose-strong:font-bold break-words overflow-wrap-anywhere"
                 style={{ wordBreak: 'break-word', overflowWrap: 'anywhere', fontSize: '14px' }}

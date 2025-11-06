@@ -302,15 +302,25 @@ const ChatView: React.FC<ChatViewProps> = ({ topic, onBack }) => {
           <div className="flex flex-col items-center flex-shrink-0">
             <button
               onClick={() => setShowProfileModal(true)}
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-white shadow-md hover:shadow-lg transition-all cursor-pointer hover:scale-105 active:scale-95 min-w-[44px] min-h-[44px]"
+              className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-visible border-2 border-white shadow-md hover:shadow-lg transition-all cursor-pointer hover:scale-105 active:scale-95 min-w-[44px] min-h-[44px] group"
+              title="프로필 보기"
             >
-              <img 
-                src={topic.imageUrl} 
-                alt={topic.philosopher}
-                className="w-full h-full object-cover"
-              />
+              <div className="w-full h-full rounded-full overflow-hidden">
+                <img 
+                  src={topic.imageUrl} 
+                  alt={topic.philosopher}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              {/* 정보 아이콘 오버레이 */}
+              <div className="absolute -bottom-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 bg-blue-500 rounded-full flex items-center justify-center shadow-md border-2 border-white group-hover:bg-blue-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
             </button>
-            <p className="text-xs sm:text-sm text-purple-600 font-semibold mt-1">{topic.philosopher}</p>
+            <p className="text-xs sm:text-sm text-gray-600 font-semibold mt-1">{topic.philosopher}</p>
+            <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5 hidden sm:block">클릭하여 프로필 보기</p>
           </div>
           <div className="flex-1 min-w-0">
             <h2 className="text-base sm:text-2xl font-bold text-gray-800 break-words">{topic.question}</h2>
