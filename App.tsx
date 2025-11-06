@@ -96,22 +96,21 @@ const App: React.FC = () => {
     >
       <div className="absolute inset-0 bg-gradient-to-br from-purple-50/50 via-pink-50/50 to-blue-50/50"></div>
       <div className="container mx-auto max-w-4xl p-2 sm:p-4 relative z-10">
-        <header className="flex flex-col sm:flex-row items-center justify-between my-4 sm:my-8 gap-4">
-          {/* 왼쪽 버튼들 - 모바일에서는 상단에 배치 */}
-          <div className="flex flex-row sm:flex-col gap-2 w-full sm:w-auto justify-center sm:justify-start">
+        <header className="flex flex-col sm:flex-row items-center justify-between my-4 sm:my-8 gap-2 sm:gap-4">
+          {/* 왼쪽 버튼들 - 모바일에서는 숨김 */}
+          <div className="hidden sm:flex sm:flex-col gap-2 w-auto justify-start">
             <button
               onClick={handleOpenTextbook}
-              className="flex items-center justify-center gap-2 px-4 py-3 sm:py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-cyan-600 transition-all shadow-lg hover:shadow-xl min-h-[44px] text-sm sm:text-base flex-1 sm:flex-none"
+              className="flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-cyan-600 transition-all shadow-lg hover:shadow-xl min-h-[44px] text-base"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
               </svg>
-              <span className="hidden sm:inline">교과서</span>
-              <span className="sm:hidden">교과서</span>
+              교과서
             </button>
             <button
               onClick={handleToggleMusic}
-              className={`flex items-center justify-center gap-2 px-4 py-3 sm:py-2 font-semibold rounded-xl transition-all shadow-lg hover:shadow-xl min-h-[44px] text-sm sm:text-base flex-1 sm:flex-none ${
+              className={`flex items-center justify-center gap-2 px-4 py-2 font-semibold rounded-xl transition-all shadow-lg hover:shadow-xl min-h-[44px] text-base ${
                 isMusicPlaying
                   ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600'
                   : 'bg-gradient-to-r from-gray-400 to-gray-500 text-white hover:from-gray-500 hover:to-gray-600'
@@ -127,8 +126,7 @@ const App: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               )}
-              <span className="hidden sm:inline">배경음악</span>
-              <span className="sm:hidden">음악</span>
+              배경음악
             </button>
           </div>
           
@@ -137,7 +135,7 @@ const App: React.FC = () => {
             <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-black mb-2 sm:mb-3">
               철학자와 도란도란 ☕
             </h1>
-            <p className="text-sm sm:text-lg text-black mt-1 sm:mt-2 font-medium px-2">
+            <p className="hidden sm:block text-lg text-black mt-2 font-medium px-2">
               AI 철학자와 대화하며 깊이 있는 질문의 답을 찾아보세요 ✨
             </p>
           </div>
