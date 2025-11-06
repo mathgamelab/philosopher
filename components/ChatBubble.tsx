@@ -15,15 +15,15 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({ message, philosopher, philosoph
 
   if (isModel) {
     return (
-      <div className="flex items-start space-x-3">
-        <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-md flex-shrink-0">
+      <div className="flex items-start space-x-2 sm:space-x-3">
+        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden border-2 border-white shadow-md flex-shrink-0">
           <img src={philosopherImage} alt={philosopher} className="w-full h-full object-cover" />
         </div>
         <div className="flex flex-col items-start flex-1 min-w-0">
-            <p className="text-sm text-purple-600 font-medium mb-1">{philosopher}</p>
+            <p className="text-xs sm:text-sm text-purple-600 font-medium mb-1">{philosopher}</p>
             <div
-                className="bg-white rounded-2xl rounded-tl-none p-4 max-w-lg prose prose-sm max-w-none shadow-md border border-purple-100 prose-p:text-gray-900 prose-p:font-semibold prose-strong:text-gray-900 prose-strong:font-bold break-words overflow-wrap-anywhere"
-                style={{ wordBreak: 'break-word', overflowWrap: 'anywhere' }}
+                className="bg-white rounded-2xl rounded-tl-none p-3 sm:p-4 max-w-[85%] sm:max-w-lg prose prose-sm max-w-none shadow-md border border-purple-100 prose-p:text-gray-900 prose-p:font-semibold prose-p:text-xs sm:prose-p:text-base prose-strong:text-gray-900 prose-strong:font-bold break-words overflow-wrap-anywhere"
+                style={{ wordBreak: 'break-word', overflowWrap: 'anywhere', fontSize: '14px' }}
                 dangerouslySetInnerHTML={{ __html: parsedContent }}
             />
         </div>
@@ -34,8 +34,8 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({ message, philosopher, philosoph
   return (
     <div className="flex justify-end">
       <div
-        className="bg-yellow-300 rounded-2xl rounded-br-none p-4 max-w-lg prose prose-sm max-w-none text-gray-800 shadow-md prose-p:text-gray-800 prose-p:font-bold prose-strong:text-gray-800 prose-strong:font-bold break-words overflow-wrap-anywhere"
-        style={{ wordBreak: 'break-word', overflowWrap: 'anywhere' }}
+        className="bg-yellow-300 rounded-2xl rounded-br-none p-3 sm:p-4 max-w-[85%] sm:max-w-lg prose prose-sm max-w-none text-gray-800 shadow-md prose-p:text-gray-800 prose-p:font-bold prose-p:text-xs sm:prose-p:text-base prose-strong:text-gray-800 prose-strong:font-bold break-words overflow-wrap-anywhere"
+        style={{ wordBreak: 'break-word', overflowWrap: 'anywhere', fontSize: '14px' }}
         dangerouslySetInnerHTML={{ __html: parsedContent }}
       />
     </div>

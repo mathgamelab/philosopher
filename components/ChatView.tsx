@@ -293,16 +293,16 @@ const ChatView: React.FC<ChatViewProps> = ({ topic, onBack }) => {
   }, [messages, topic, isSaving, studentInfo, reflection]);
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl flex flex-col h-[85vh] max-h-[800px] border-2 border-purple-100">
-      <header className="flex items-center p-4 border-b border-purple-100 shrink-0 bg-gradient-to-r from-purple-50 to-pink-50 rounded-t-2xl">
-        <button onClick={onBack} className="p-2 rounded-full hover:bg-purple-100 transition-colors text-purple-600">
+    <div className="bg-white rounded-2xl shadow-xl flex flex-col h-[85vh] sm:h-[85vh] max-h-[800px] min-h-[500px] border-2 border-purple-100">
+      <header className="flex items-center p-2 sm:p-4 border-b border-purple-100 shrink-0 bg-gradient-to-r from-purple-50 to-pink-50 rounded-t-2xl">
+        <button onClick={onBack} className="p-2 sm:p-2 rounded-full hover:bg-purple-100 active:bg-purple-200 transition-colors text-purple-600 min-w-[44px] min-h-[44px] flex items-center justify-center">
           <BackIcon/>
         </button>
-        <div className="ml-4 flex items-center gap-4 flex-1">
+        <div className="ml-2 sm:ml-4 flex items-center gap-2 sm:gap-4 flex-1 min-w-0">
           <div className="flex flex-col items-center flex-shrink-0">
             <button
               onClick={() => setShowProfileModal(true)}
-              className="w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-md hover:shadow-lg transition-all cursor-pointer hover:scale-105"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-white shadow-md hover:shadow-lg transition-all cursor-pointer hover:scale-105 active:scale-95 min-w-[44px] min-h-[44px]"
             >
               <img 
                 src={topic.imageUrl} 
@@ -310,36 +310,38 @@ const ChatView: React.FC<ChatViewProps> = ({ topic, onBack }) => {
                 className="w-full h-full object-cover"
               />
             </button>
-            <p className="text-sm text-purple-600 font-semibold mt-1">{topic.philosopher}</p>
+            <p className="text-xs sm:text-sm text-purple-600 font-semibold mt-1">{topic.philosopher}</p>
           </div>
-          <div className="flex-1">
-            <h2 className="text-2xl font-bold text-gray-800">{topic.question}</h2>
+          <div className="flex-1 min-w-0">
+            <h2 className="text-base sm:text-2xl font-bold text-gray-800 break-words">{topic.question}</h2>
           </div>
         </div>
       </header>
 
-      <div className="p-4 border-b border-purple-100 bg-gradient-to-r from-purple-50/50 to-pink-50/50">
-        <div className="flex gap-3">
+      <div className="p-2 sm:p-4 border-b border-purple-100 bg-gradient-to-r from-purple-50/50 to-pink-50/50">
+        <div className="flex gap-2 sm:gap-3">
           <button
             onClick={() => setIsTextbookVisible(prev => !prev)}
-            className="flex-1 flex items-center justify-center px-4 py-2 font-semibold text-white bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl hover:from-blue-600 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-300 transition-all shadow-md hover:shadow-lg"
+            className="flex-1 flex items-center justify-center px-3 sm:px-4 py-3 sm:py-2 font-semibold text-white bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl hover:from-blue-600 hover:to-cyan-600 active:from-blue-700 active:to-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-300 transition-all shadow-md hover:shadow-lg min-h-[44px] text-sm sm:text-base"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
             </svg>
-            {isTextbookVisible ? '교과서 닫기' : '교과서 읽기'}
+            <span className="hidden sm:inline">{isTextbookVisible ? '교과서 닫기' : '교과서 읽기'}</span>
+            <span className="sm:hidden">{isTextbookVisible ? '닫기' : '교과서'}</span>
           </button>
           <button
             onClick={() => setIsVideoVisible(prev => !prev)}
-            className="flex-1 flex items-center justify-center px-4 py-2 font-semibold text-white bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl hover:from-purple-600 hover:to-pink-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-300 transition-all shadow-md hover:shadow-lg"
+            className="flex-1 flex items-center justify-center px-3 sm:px-4 py-3 sm:py-2 font-semibold text-white bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl hover:from-purple-600 hover:to-pink-600 active:from-purple-700 active:to-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-300 transition-all shadow-md hover:shadow-lg min-h-[44px] text-sm sm:text-base"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" viewBox="0 0 20 20" fill="currentColor">
               {isVideoVisible 
                 ? <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
                 : <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
               }
             </svg>
-            {isVideoVisible ? '영상 닫기' : '영상 보기'}
+            <span className="hidden sm:inline">{isVideoVisible ? '영상 닫기' : '영상 보기'}</span>
+            <span className="sm:hidden">{isVideoVisible ? '닫기' : '영상'}</span>
           </button>
         </div>
         {isTextbookVisible && (
@@ -371,7 +373,7 @@ const ChatView: React.FC<ChatViewProps> = ({ topic, onBack }) => {
         )}
       </div>
 
-      <div ref={chatContainerRef} className="flex-1 p-6 overflow-y-auto space-y-6 bg-gradient-to-b from-purple-50/30 via-pink-50/30 to-blue-50/30">
+      <div ref={chatContainerRef} className="flex-1 p-3 sm:p-6 overflow-y-auto space-y-4 sm:space-y-6 bg-gradient-to-b from-purple-50/30 via-pink-50/30 to-blue-50/30" style={{ WebkitOverflowScrolling: 'touch' }}>
         {messages.map((msg, index) => (
           <ChatBubble key={index} message={msg} philosopher={topic.philosopher} philosopherImage={topic.imageUrl} />
         ))}
@@ -399,9 +401,9 @@ const ChatView: React.FC<ChatViewProps> = ({ topic, onBack }) => {
                   key={idx}
                   onClick={() => sendQuestion(suggestedQ, true)}
                   disabled={isLoading}
-                  className="bg-white border-2 border-purple-200 rounded-xl px-4 py-3 text-left hover:border-purple-400 hover:bg-purple-50 transition-all shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="bg-white border-2 border-purple-200 rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 text-left hover:border-purple-400 hover:bg-purple-50 active:bg-purple-100 active:border-purple-500 transition-all shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px] w-full"
                 >
-                  <span className="text-gray-700 font-medium">{suggestedQ}</span>
+                  <span className="text-gray-700 font-medium text-sm sm:text-base break-words">{suggestedQ}</span>
                 </button>
               ))
             )}
@@ -425,20 +427,20 @@ const ChatView: React.FC<ChatViewProps> = ({ topic, onBack }) => {
         )}
       </div>
 
-      <div className="p-4 border-t border-purple-100 bg-gradient-to-r from-white to-purple-50/50 rounded-b-2xl shrink-0">
-        <form onSubmit={handleSendMessage} className="flex items-center space-x-3">
+      <div className="p-2 sm:p-4 border-t border-purple-100 bg-gradient-to-r from-white to-purple-50/50 rounded-b-2xl shrink-0">
+        <form onSubmit={handleSendMessage} className="flex items-center space-x-2 sm:space-x-3">
           <input
             type="text"
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
             placeholder="궁금한 점을 질문해보세요..."
-            className="flex-1 w-full px-4 py-3 border-2 border-purple-200 rounded-full focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-400 bg-white shadow-sm"
+            className="flex-1 w-full px-3 sm:px-4 py-2.5 sm:py-3 border-2 border-purple-200 rounded-full focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-400 bg-white shadow-sm text-base"
             disabled={isLoading}
           />
           <button
             type="submit"
             disabled={isLoading || !userInput.trim()}
-            className="p-3 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-600 hover:to-cyan-600 disabled:from-gray-300 disabled:to-gray-300 disabled:cursor-not-allowed transition-all shadow-md hover:shadow-lg"
+            className="p-2.5 sm:p-3 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-600 hover:to-cyan-600 active:from-blue-700 active:to-cyan-700 disabled:from-gray-300 disabled:to-gray-300 disabled:cursor-not-allowed transition-all shadow-md hover:shadow-lg min-w-[44px] min-h-[44px] flex items-center justify-center"
           >
             <SendIcon />
           </button>
@@ -446,7 +448,7 @@ const ChatView: React.FC<ChatViewProps> = ({ topic, onBack }) => {
             type="button"
             onClick={handleSaveChat}
             disabled={isLoading || isSaving || messages.length === 0}
-            className="p-3 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-600 hover:to-cyan-600 disabled:from-gray-300 disabled:to-gray-300 disabled:cursor-not-allowed transition-all shadow-md hover:shadow-lg"
+            className="p-2.5 sm:p-3 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-600 hover:to-cyan-600 active:from-blue-700 active:to-cyan-700 disabled:from-gray-300 disabled:to-gray-300 disabled:cursor-not-allowed transition-all shadow-md hover:shadow-lg min-w-[44px] min-h-[44px] flex items-center justify-center"
             title="대화 저장"
           >
             <SaveIcon />
@@ -456,12 +458,12 @@ const ChatView: React.FC<ChatViewProps> = ({ topic, onBack }) => {
 
       {/* 저장 모달 */}
       {showSaveModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" onClick={() => setShowSaveModal(false)}>
-          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 p-6" onClick={(e) => e.stopPropagation()}>
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">대화 내용 저장</h2>
-            <p className="text-gray-600 mb-6">대화 내용을 PDF로 저장합니다.</p>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onClick={() => setShowSaveModal(false)}>
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-2 sm:mx-4 p-4 sm:p-6 max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-3 sm:mb-4">대화 내용 저장</h2>
+            <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">대화 내용을 PDF로 저장합니다.</p>
             
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   학번과 이름 <span className="text-red-500">*</span>
@@ -471,7 +473,7 @@ const ChatView: React.FC<ChatViewProps> = ({ topic, onBack }) => {
                   value={studentInfo}
                   onChange={(e) => setStudentInfo(e.target.value)}
                   placeholder="예) 10101 김철학"
-                  className="w-full px-4 py-3 border-2 border-purple-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-400 bg-white"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border-2 border-purple-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-400 bg-white text-base"
                   autoFocus
                 />
               </div>
@@ -485,22 +487,22 @@ const ChatView: React.FC<ChatViewProps> = ({ topic, onBack }) => {
                   onChange={(e) => setReflection(e.target.value)}
                   placeholder="이번 대화에서 느낀 점이나 생각을 자유롭게 적어주세요..."
                   rows={5}
-                  className="w-full px-4 py-3 border-2 border-purple-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-400 bg-white resize-none"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border-2 border-purple-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-400 bg-white resize-none text-base"
                 />
               </div>
             </div>
 
-            <div className="flex gap-3 mt-6">
+            <div className="flex gap-2 sm:gap-3 mt-4 sm:mt-6">
               <button
                 onClick={() => setShowSaveModal(false)}
-                className="flex-1 px-4 py-3 border-2 border-gray-300 rounded-xl text-gray-700 font-medium hover:bg-gray-50 transition-colors"
+                className="flex-1 px-3 sm:px-4 py-2.5 sm:py-3 border-2 border-gray-300 rounded-xl text-gray-700 font-medium hover:bg-gray-50 active:bg-gray-100 transition-colors min-h-[44px] text-sm sm:text-base"
               >
                 취소
               </button>
               <button
                 onClick={handleSaveConfirm}
                 disabled={isSaving || !studentInfo.trim()}
-                className="flex-1 px-4 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-medium rounded-xl hover:from-blue-600 hover:to-cyan-600 disabled:from-gray-300 disabled:to-gray-300 disabled:cursor-not-allowed transition-all shadow-md"
+                className="flex-1 px-3 sm:px-4 py-2.5 sm:py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-medium rounded-xl hover:from-blue-600 hover:to-cyan-600 active:from-blue-700 active:to-cyan-700 disabled:from-gray-300 disabled:to-gray-300 disabled:cursor-not-allowed transition-all shadow-md min-h-[44px] text-sm sm:text-base"
               >
                 {isSaving ? '저장 중...' : '저장하기'}
               </button>

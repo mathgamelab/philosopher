@@ -25,24 +25,22 @@ const TopicCard: React.FC<TopicCardProps> = ({ topic, onClick }) => {
   return (
     <button
       onClick={onClick}
-      className={`${colors.bg} ${colors.border} border-2 rounded-2xl shadow-sm p-6 text-left hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-purple-300 focus:ring-opacity-50 group`}
+      className={`${colors.bg} ${colors.border} border-2 rounded-2xl shadow-sm p-4 sm:p-6 text-left hover:shadow-lg hover:-translate-y-1 active:translate-y-0 active:shadow-md transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-purple-300 focus:ring-opacity-50 group min-h-[120px] sm:min-h-[140px]`}
     >
       <div className="flex flex-col">
-        <div className="flex items-start gap-3 mb-3">
-          <div className="text-3xl">{colors.icon}</div>
-          <h2 className="text-xl font-bold text-gray-800 flex-1 group-hover:text-purple-600 transition-colors">
-            {topic.question}
-          </h2>
+        <div className="flex items-start gap-2 sm:gap-3 mb-2 sm:mb-3">
+          <div className="text-2xl sm:text-3xl flex-shrink-0">{colors.icon}</div>
+          <h2 className="text-base sm:text-xl font-bold text-gray-800 flex-1 group-hover:text-purple-600 transition-colors break-words">{topic.question}</h2>
         </div>
-        <div className="flex items-center justify-center gap-2 mt-3">
-          <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-sm">
+        <div className="flex items-center justify-center gap-2 mt-2 sm:mt-3">
+          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden border-2 border-white shadow-sm flex-shrink-0">
             <img 
               src={topic.imageUrl} 
               alt={topic.philosopher}
               className="w-full h-full object-cover"
             />
           </div>
-          <p className="text-purple-600 font-bold text-lg">{topic.philosopher}</p>
+          <p className="text-purple-600 font-bold text-base sm:text-lg">{topic.philosopher}</p>
         </div>
       </div>
     </button>
